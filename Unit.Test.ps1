@@ -1,5 +1,13 @@
-Describe "Check results file is present" {
-    It "Check results file is present" {
-        Test-Path resultsfile.log | Should -Be $true
-    }
+Describe "HelloWorldTest" {
+	It "Outputs: 'Hello, World!'" {
+		Get-HelloWorld | Should be 'Hello, World!'
+	}
+
+	It "Outputs: Hello, Alice!" {
+		Get-HelloWorld 'Alice' | Should be 'Hello, Alice!'
+	}
+
+	It "Outputs: Hello, Bob!" {
+		Get-HelloWorld -person 'Bob' | Should be 'Hello, Bob!'
+	}
 }
