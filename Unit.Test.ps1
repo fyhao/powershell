@@ -29,7 +29,7 @@ Describe 'Get-Planet' {
     }
 	
 	It 'Make HTTP Call' {
-		Write-Host MakeHTTPCall
+		MakeHTTPCall
     }
 }
 
