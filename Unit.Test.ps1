@@ -1,32 +1,23 @@
-function Get-HelloWorld {
-	<#
-    .SYNOPSIS
-    Outputs "Hello World"
-    
-    .DESCRIPTION
-    Output "Hello World" or "Hello <Name>" if Name is supplied to the CmdLet.
-    
-    .PARAMETER person
-    Name of the person to display. If not supplied, Hello World should be displayed
-    
-    .EXAMPLE
-    Get-HelloWorld
-    #>
-	param( [string]$person = "World")
+BeforeAll { 
+    function Get-Planet ([string]$Name = '*') {
+        $planets = @(
+            @{ Name = 'Mercury' }
+            @{ Name = 'Venus'   }
+            @{ Name = 'Earth'   }
+            @{ Name = 'Mars'    }
+            @{ Name = 'Jupiter' }
+            @{ Name = 'Saturn'  }
+            @{ Name = 'Uranus'  }
+            @{ Name = 'Neptune' }
+        ) | ForEach-Object { [PSCustomObject] $_ }
 
-	return "Hello, $person!"
+        $planets | Where-Object { $_.Name -like $Name }
+    }
 }
 
-Describe "HelloWorldTest" {
-	It "Outputs: 'Hello, World!'" {
-		Get-HelloWorld | Should be 'Hello, World!'
-	}
-
-	It "Outputs: Hello, Alice!" {
-		Get-HelloWorld 'Alice' | Should be 'Hello, Alice!'
-	}
-
-	It "Outputs: Hello, Bob!" {
-		Get-HelloWorld -person 'Bob' | Should be 'Hello, Bob!'
-	}
+Describe 'Get-Planet' {
+    It 'Given no parameters, it lists all 8 planets' {
+        $allPlanets = Get-Planet
+        $allPlanets.Count | Should -Be 8
+    }
 }
