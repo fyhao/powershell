@@ -1,3 +1,6 @@
+$here = Split-Path -Parent $MyInvocation.MyCommand.Path
+$sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests\.', '.'
+. "$here\$sut"
 Describe "HelloWorldTest" {
 	It "Outputs: 'Hello, World!'" {
 		Get-HelloWorld | Should be 'Hello, World!'
