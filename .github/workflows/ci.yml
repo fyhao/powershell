@@ -12,4 +12,4 @@ jobs:
       shell: pwsh
       run: |
         dir
-        Invoke-Pester Unit.Tests.ps1
+        Invoke-Pester Unit.Test.ps1
