@@ -29,7 +29,9 @@ Describe 'Get-Planet' {
     }
 	
 	It 'Make HTTP Call' {
-		MakeHTTPCall
+		MakeHTTPCall > out.txt
+		Get-Content out.txt
+		
     }
 }
 
