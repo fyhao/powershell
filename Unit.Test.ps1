@@ -1,4 +1,4 @@
-& "$PSScriptRoot\HelloWorld.example.ps1"
+. "$PSScriptRoot\HelloWorld.example.ps1"
 Describe "HelloWorldTest" {
 	It "Outputs: 'Hello, World!'" {
 		Get-HelloWorld | Should be 'Hello, World!'
