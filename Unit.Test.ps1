@@ -1,7 +1,4 @@
-$here = Split-Path -Parent $MyInvocation.MyCommand.Path
-$sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests\.', '.'
-echo $here
-echo $sut
+& "$PSScriptRoot\HelloWorld.example.ps1"
 Describe "HelloWorldTest" {
 	It "Outputs: 'Hello, World!'" {
 		Get-HelloWorld | Should be 'Hello, World!'
